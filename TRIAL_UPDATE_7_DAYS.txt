@@ -1,0 +1,20 @@
+VYAPAK BILLING - 7 DAY TRIAL UPDATE
+
+This source package changes the business free trial from 30 days to 7 days.
+
+WHAT CHANGED
+- New self-service signups receive a 7-day trial.
+- Admin-created business accounts receive a 7-day trial.
+- Login/signup/trial labels now say 7 days.
+- Existing business trial records that have a longer end date are capped to 7 days from their original trial_start when the account is checked by the updated server.
+- Already-expired trials are made inactive by the existing server-side expiry logic.
+- Added supabase/SET_TRIAL_TO_7_DAYS.sql for bulk normalization if desired.
+
+INSTALL INTO YOUR EXISTING PROJECT
+1. Stop the current app (close the terminal running it).
+2. Extract the ZIP over your existing project folder and allow source files to be overwritten.
+3. KEEP your existing .env file; this package intentionally does not include .env so it cannot overwrite your keys/settings.
+4. Start the app again using your existing startup script.
+5. Refresh the site and verify a new test account shows a 7-day trial.
+
+The account endpoint also caps pre-existing 30-day trial records automatically; no SQL is required for the code path to enforce the 7-day limit. The included SQL is optional if you want to normalize all existing trial rows at once.
